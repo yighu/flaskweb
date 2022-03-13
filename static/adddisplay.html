@@ -1,0 +1,14 @@
+<html>
+  <body>
+    <B>Joy to the world!</B>
+    <form action="/adddisplay" method="POST">
+        <input placeholder="new item" name="item">
+        <input placeholder="1.5" name="price">
+
+        <input type="submit" value="Submit">
+</form> 
+{% for item in items %}
+<div> {{ item[0] }} <tab> {{ item[1] }}</div>
+{% endfor %}
+  </body>
+</html>
