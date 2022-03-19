@@ -2,7 +2,7 @@
 #!pip install flask-ngrok
 #!pip install flask-bootstrap
 
-from flask_ngrok import run_with_ngrok
+#from flask_ngrok import run_with_ngrok
 from flask import Flask, render_template , request 
 import os
 from markupsafe import escape
@@ -17,7 +17,7 @@ import sqlite3
 
 app = Flask(__name__, template_folder='static')
 #CORS(app)
-run_with_ngrok(app)
+#run_with_ngrok(app)
 
 def setupDb():
     conn = sqlite3.connect('test.db')

@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head> Hello World!
+</head>
+<body>
+<form action="/mp" method="POST">
+        <input placeholder="new item" name="item">
+        <input type="submit" value="Submit">
+</form> 
+{% for item in items %}
+<div>{{ item[0] }}</div>
+{% endfor %}
+</body>
+</html>
