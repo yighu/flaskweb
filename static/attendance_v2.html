@@ -1,0 +1,45 @@
+<html>
+  <body>
+    <B>Please Enter the Attendance Information Below and Then submit</B>
+    <form action="/mp" method="POST">
+        <div>Class Name:</div>
+        <input placeholder="Python" name="xclassname">
+      <select name="classname">
+  <option value="{{classes[0][0]}}" selected>{{classes[0][0]}}</option>
+  {% for class in classes[1:][0] %}
+    <option value="{{class}}">{{class}}</option>
+  {% endfor %}
+</select>
+      <div>Teacher:</div>
+        <input placeholder="" name="teacher">
+            <div>Student:</div>
+
+        <input placeholder="" name="student">
+                  <div>Date:</div>
+
+        <input placeholder="" name="date">
+                  <div>Attended:</div>
+
+        <input placeholder="" name="attended">
+      <div>------------</div>
+      <!-- classname, teacher, student, date, attended -->
+        <input type="submit" value="Submit">
+</form> 
+
+    <table>
+      <tr>
+        <th>Class</th>
+      <th>Teacher</th>
+        <th>Student</th>
+        <th>Date</th>
+        <th>Attendance</th>
+      </tr>
+     {% for item in items %}
+<tr><td> {{ item[0] }} </td><td> {{ item[1] }}
+</td><td> {{ item[2] }}
+</td><td> {{ item[3] }}</td><td> {{ item[4] }} </td>
+</tr>
+{% endfor %} 
+    </table>
+  </body>
+</html>

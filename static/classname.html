@@ -1,0 +1,28 @@
+<html>
+  <body>
+    <B>Please Enter the Class information Below and Then submit</B>
+    <form action="/saveclass" method="POST">
+        <div>Class Name:</div>
+        <input placeholder="Python" name="classname">
+      <div>Teacher:</div>
+        <input placeholder="" name="teacher">
+            
+      <div></div>
+      <!-- classname, teacher, student, date, attended -->
+        <input type="submit" value="Submit">
+</form> 
+
+    <table>
+      <tr>
+        <th>Class</th>
+      <th>Teacher</th>
+       
+      </tr>
+     {% for item in items %}
+<tr><td> {{ item[0] }} </td><td> {{ item[1] }}
+</td>
+</tr>
+{% endfor %} 
+    </table>
+  </body>
+</html>

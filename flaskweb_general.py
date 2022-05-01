@@ -1,8 +1,7 @@
-#https://replit.com/talk/learn/Flask-Tutorial-Part-1-the-basics/26272
-#to get it work in replit
+
 #!pip install flask-ngrok
 #!pip install flask-bootstrap
-import random, string
+
 #from flask_ngrok import run_with_ngrok
 from flask import Flask, render_template , request 
 import os
@@ -36,7 +35,7 @@ CREATE TABLE IF NOT EXISTS team(team text);''')
 def insert(item):
   print(f'to insert {item}')
   conn = sqlite3.connect('test.db')
-  conn.execute(f"INSERT INTO team VALUES('{item}');") #sql insert
+  conn.execute(f"INSERT INTO team VALUES('{item}');")
   conn.commit()
   print("data inserted successfully");
   conn.close()
@@ -47,7 +46,7 @@ def getData():
   result=''
   for row in cursor:
     #print(row)
-    result = result +"<br/>" +row[0]
+    result = result +"<br>" +row[0]
   
   conn.close()
   return result
@@ -88,7 +87,7 @@ def index():
 
 
 @app.route('/adddisplay', methods=['GET','POST'])
-def executedisplay():
+def adddisplay():
     if request.method=='GET':
       pass
     if request.method=='POST':
@@ -111,5 +110,4 @@ def map():
 
 if __name__ == '__main__':
    setupDb()
-   app.run(host='0.0.0.0',  # EStablishes the host, required for repl to detect the site
-                port=random.randint(2000, 9000))
+   app.run()
