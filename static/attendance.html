@@ -3,13 +3,13 @@
     <B>Please Enter the Attendance Information Below and Then submit</B>
     <form action="/mp" method="POST">
         <div>Class Name:</div>
-        <input hidden placeholder="Python" name="xclassname">
+        
         <select name="classname">
   
-          <option value="{{classes[0][0]}}" selected>{{classes[0][0]}</option>
+          <option value="{{classes[0][0]}}" selected>{{classes[0][0]}}</option>
   
-          {% for class in classes[0:][0]%}
-          <option value="{{class}}">{{class}}</option>
+          {% for class in classes%}
+          <option value="{{class[0]}}">{{class[0]}}</option>
           {% endfor %}
         </select>
         <div>Teacher:</div>
@@ -19,10 +19,9 @@
         <input hidden placeholder="" name="xstudent">
         <select name="student">
   
-          <option value="{{students[0][0]}}" selected>{{students[0][1]}}</option>
-  
-          {% for s in students[0:]%}
-          <option value="{{s[0]}}">{{s[1]}}</option>
+      
+          {% for s in students%}
+          <option value="{{s[1]}}">{{s[0]}} </option>
           {% endfor %}
         </select>
         <div>Date:</div>

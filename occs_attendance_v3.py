@@ -1,4 +1,4 @@
-#https://replit.com/talk/learn/Flask-Tutorial-Part-1-the-basics/26272
+e#https://replit.com/talk/learn/Flask-Tutorial-Part-1-the-basics/26272
 #to get it work in replit
 #!pip install flask-ngrok
 #!pip install flask-bootstrap
@@ -19,21 +19,19 @@ import sqlite3
 app = Flask(__name__, template_folder='static')
 #CORS(app)
 #run_with_ngrok(app)
-dbname='test_v2.db'
-def connDb():
-  return sqlite3.connect(dbname)
+
 def setupDb():
-    conn = connDb()
-    print("Opened database successfully")
+    conn = sqlite3.connect('test.db')
+    print("Opened database successfully");
 
     conn.execute('''
-CREATE TABLE IF NOT EXISTS attendance(classname text, teacher text, student text, date text, attended text)      
+CREATE TABLE IF NOT EXISTS attendance(classname text, teacher text, student text, date text, attended text);      
                  ''')
     conn.execute('''
-CREATE TABLE IF NOT EXISTS classname(name text, teacher text, unique(name));                 
+CREATE TABLE IF NOT EXISTS classname(name text, teacher text);                 
                  ''')
     conn.execute('''
-CREATE TABLE IF NOT EXISTS student(name text, email text, unique(email));                 
+CREATE TABLE IF NOT EXISTS student(name text, email text);                 
                  ''')
   
     conn.commit()
@@ -43,18 +41,18 @@ CREATE TABLE IF NOT EXISTS student(name text, email text, unique(email));
     conn.close()
 
 def insertClass(classname, teacher):
-  conn = connDb()
+  conn = sqlite3.connect('test.db')
   conn.execute(f"INSERT INTO classname VALUES('{classname}', '{teacher}');")
   conn.commit()
   conn.close()
   
 def insertStudent(name, email):
-  conn = connDb()
+  conn = sqlite3.connect('test.db')
   conn.execute(f"INSERT INTO student VALUES('{name}', '{email}');")
   conn.commit()
   conn.close()  
 def readClass():
-  conn = connDb()
+  conn = sqlite3.connect('test.db')
   cursor = conn.execute(''' SELECT *  FROM classname''')
   result=' results <br>'
   for row in cursor:
@@ -64,7 +62,7 @@ def readClass():
   conn.close()
   return result
 def getClassDataArray():
-  conn = connDb()
+  conn = sqlite3.connect('test.db')
   cursor = conn.execute(''' SELECT *  FROM classname''')
   data = cursor.fetchall()
   conn.close()
@@ -72,14 +70,14 @@ def getClassDataArray():
 
 def insert(classname, teacher, student, date, attended):
   print(f'to insert {classname}')
-  conn = sqlite3.connect(dbname)
+  conn = sqlite3.connect('test.db')
   conn.execute(f"INSERT INTO attendance VALUES('{classname}', '{teacher}','{student}','{date}','{attended}');")
   conn.commit()
   print("data inserted successfully");
   conn.close()
 
 def getData():
-  conn = connDb()
+  conn = sqlite3.connect('test.db')
   cursor = conn.execute(''' SELECT *  FROM attendance''')
   result=' results <br>'
   for row in cursor:
@@ -91,7 +89,7 @@ def getData():
 
 
 def getDataArray():
-  conn = connDb()
+  conn = sqlite3.connect('test.db')
   cursor = conn.execute(''' SELECT *  FROM attendance''')
   data = cursor.fetchall()
   conn.close()
@@ -127,7 +125,6 @@ def recordattendance():
     classesData = getClassDataArray()
     attendances = getDataArray()  
     studentData = getStudentDataArray()
-    //yesno=
     return render_template('attendance.html', items = attendances, classes = classesData, students = studentData)
 
 
@@ -208,7 +205,7 @@ def mapstudent():
 
 
 def getStudentDataArray():
-  conn = sqlite3.connect(dbname)
+  conn = sqlite3.connect('test.db')
   cursor = conn.execute(''' SELECT *  FROM student''')
   data = cursor.fetchall()
   conn.close()
