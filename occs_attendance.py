@@ -1,4 +1,4 @@
-#https://replit.com/talk/learn/Flask-Tutorial-Part-1-the-basics/26272
+e#https://replit.com/talk/learn/Flask-Tutorial-Part-1-the-basics/26272
 #to get it work in replit
 #!pip install flask-ngrok
 #!pip install flask-bootstrap
@@ -122,9 +122,10 @@ def index():
 def recordattendance():
     if request.method=='GET':
       pass
-   
-    data = getDataArray()  
-    return render_template('attendance.html', items = data)
+    classesData = getClassDataArray()
+    attendances = getDataArray()  
+    studentData = getStudentDataArray()
+    return render_template('attendance.html', items = attendances, classes = classesData, students = studentData)
 
 
 @app.route('/class', methods=['GET','POST'])
@@ -159,7 +160,9 @@ def map():
 
       insert(classname, teacher, student, date, attended )
     items=getDataArray()
-    return render_template('attendance.html', items=items)
+    classesData = getClassDataArray()
+    studentData = getStudentDataArray()
+    return render_template('attendance.html', items=items, classes = classesData, students = studentData)
 
 @app.route('/saveclass', methods=['GET', 'POST'])
 def mapclass():
