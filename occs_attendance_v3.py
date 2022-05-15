@@ -1,4 +1,4 @@
-e#https://replit.com/talk/learn/Flask-Tutorial-Part-1-the-basics/26272
+#https://replit.com/talk/learn/Flask-Tutorial-Part-1-the-basics/26272
 #to get it work in replit
 #!pip install flask-ngrok
 #!pip install flask-bootstrap

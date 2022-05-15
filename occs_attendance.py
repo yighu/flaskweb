@@ -127,7 +127,7 @@ def recordattendance():
     classesData = getClassDataArray()
     attendances = getDataArray()  
     studentData = getStudentDataArray()
-    //yesno=
+    #yesno=
     return render_template('attendance.html', items = attendances, classes = classesData, students = studentData)
 
 
