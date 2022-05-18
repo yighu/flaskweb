@@ -132,12 +132,10 @@ def recordattendance():
     return render_template('attendance.html', items = attendances, classes = classesData, students = studentData, classmap = classdict)
 #input data is a list of (class, teacher)
 def fromListToDict(data):
-  print(data)
   classmp = {}
   for row in data:
-    classmp[row[0]] = row[1]
-    #row[0]class,row[1] teacher
-  return classmp  
+    classmp[row[0]] = row[1] #row[0]class,row[1] teacher
+  classmp  
 @app.route('/class', methods=['GET','POST'])
 def displayclass():
     if request.method=='GET':
@@ -171,8 +169,7 @@ def map():
     items=getDataArray()
     classesData = getClassDataArray()
     studentData = getStudentDataArray()
-    classdict = fromListToDict(classesData)
-    return render_template('attendance.html', items=items, classes = classesData, students = studentData, classmap=classdict)
+    return render_template('attendance.html', items=items, classes = classesData, students = studentData)
 
 @app.route('/saveclass', methods=['GET', 'POST'])
 def mapclass():
