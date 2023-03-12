@@ -1,0 +1,29 @@
+<html>
+  <body>
+    <B>Please Enter the Parent information Below and Then submit</B>
+    <form action="/saveParent" method="POST">
+        <div>Parent Name:</div>
+        <input placeholder="" name="name">
+      <div>Email:</div>
+        <input placeholder="" name="email">
+      <div>Phone:</div>
+        <input placeholder="999-99999-999" name="phone">
+      <div></div>
+      <!-- classname, teacher, student, date, attended -->
+        <input type="submit" value="Submit">
+</form> 
+
+    <table>
+      <tr>
+        <th>Name</th>
+      <th>Email</th>
+       <th>Phone</th>
+      </tr>
+     {% for item in parents %}
+<tr><td> {{ item[0] }} </td><td> {{ item[1] }}
+</td><td>{{ item[2] }} </td>
+</tr>
+{% endfor %} 
+    </table>
+  </body>
+</html>

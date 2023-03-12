@@ -7,11 +7,11 @@
 
         <input type="submit" value="Submit">
 </form> 
-{% for item in items %}
-<div> {{ item[0] }} <tab> {{ item[1] }}</div>
-{% endfor %}
     <table>
-      <tr><th>Item</th></tr>
+	    <tr><th>Item</th><th>Price</th></tr>
+{% for item in items %}
+<tr><td> {{ item[0] }} </td><td> {{ item[1] }}</td></tr>
+{% endfor %}
     
     </table>
   </body>
