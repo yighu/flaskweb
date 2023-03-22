@@ -1,0 +1,24 @@
+<html>
+  <body>
+    <B>Please Enter the key for search and Then submit</B>
+    <form action="/" method="POST">
+        <div>Input key:</div>
+        <input placeholder="Key" name="key">
+            
+      <div></div>
+      <!-- classname, teacher, student, date, attended -->
+        <input type="submit" value="Submit">
+</form> 
+
+    <table>
+      <tr>
+        <th>Verses</th>
+       
+      </tr>
+     {% for item in items %}
+<tr><td> {{ item }}</td></tr>
+{% endfor %} 
+       
+    </table>
+  </body>
+</html>

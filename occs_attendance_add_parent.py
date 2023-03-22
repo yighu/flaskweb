@@ -53,7 +53,7 @@ def insertClass(classname, teacher):
   
 def insertParentStudent(parentemail, studentemail):
   conn = connDb()
-  conn.execute(f"INSERT INTO parentstudent VALUES('{parentemail}','${studentemail}')")
+  conn.execute(f"INSERT INTO parentstudent VALUES('{parentemail}','{studentemail}')")
   conn.commit()
   conn.close()
   
@@ -158,7 +158,24 @@ def recordattendance():
     #yesno=
     classdict = fromListToDict(classesData)
     return render_template('attendance.html', items = attendances, classes = classesData, students = studentData, classmap = classdict)
-#input data is a list of (class, teacher)
+@app.route("/parentstudent", methods=['GET','POST'])
+def displayParentStudent():
+    if request.method == 'GET':
+      pass
+    parentstudents =  getParentStudents()
+    return render_template('parentstudent.html', items = parentstudents) 
+
+@app.route("/insertparentstudent", methods = ['GET','POST'])
+def saveparentstudent():
+    if request.method == 'GET':
+       pass
+    parentemail =    request.form.get("parentemail")
+    studentemail = request.form.get("studentemail")
+    insertParentStudent(parentemail, studentemail)
+    parentstudents =  getParentStudents()
+    return render_template('parentstudent.html', items = parentstudents) 
+  
+  #input data is a list of (class, teacher)
 def fromListToDict(data):
   classmp = {}
   for row in data:
